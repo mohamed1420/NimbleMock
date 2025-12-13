@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Exclude BenchmarkDotNet artifacts from normalization
+**/BenchmarkDotNet.Artifacts/** -text
+

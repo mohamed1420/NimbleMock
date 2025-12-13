@@ -36,6 +36,10 @@ bld/
 benchmarks/results/*.json
 !benchmarks/results/baseline.json
 
+# BenchmarkDotNet artifacts (auto-generated)
+**/BenchmarkDotNet.Artifacts/
+**/BenchmarkDotNet.Artifacts/**
+
 # Rider
 .idea/
 
