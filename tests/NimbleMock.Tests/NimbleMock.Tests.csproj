@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\NimbleMock\NimbleMock.csproj" />
+    <ProjectReference Include="..\..\src\NimbleMock.SourceGenerator\NimbleMock.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

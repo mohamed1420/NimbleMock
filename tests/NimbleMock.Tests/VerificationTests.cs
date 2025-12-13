@@ -47,10 +47,10 @@ public class VerificationTests
     public void Verify_Never_PassesWhenNotCalled()
     {
         var mock = Mock.Of<IUserRepository>()
-            .Setup(x => x.Delete(1), null)
+            .Setup<User>(x => x.GetById(1), new User { Id = 1 })
             .Build();
 
-        mock.Verify(x => x.Delete(1)).Never();
+        mock.Verify<User>(x => x.GetById(1)).Never();
     }
 
     [Fact]

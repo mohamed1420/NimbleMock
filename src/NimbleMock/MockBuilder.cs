@@ -93,6 +93,7 @@ public ref struct MockBuilder<T> where T : class
         return this;
     }
     
+    
     /// <summary>
     /// Builds the configured mock instance.
     /// </summary>

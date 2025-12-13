@@ -39,6 +39,9 @@ mock.Verify(x => x.GetById(1)).Once();
 - **Fluent API** with intelligent type inference
 - **First-class async** support for `Task<T>` and `ValueTask<T>`
 - **Partial mocks** for large interfaces
+- **Static/Sealed type mocking** via `Mock.Static<T>` (e.g., `DateTime.Now`)
+- **Generics & nested hierarchies** with full type inference
+- **Lie-proofing** validation against real API endpoints
 - **Compile-time** analyzers
 
 ## Next Steps

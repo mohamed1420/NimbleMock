@@ -30,7 +30,7 @@ jobs:
         run: dotnet build src/NimbleMock/NimbleMock.csproj -c Release --no-restore /p:Version=${{ steps.version.outputs.version }}
       
       - name: Pack
-        run: dotnet pack src/NimbleMock/NimbleMock.csproj -c Release --no-build -o ./nupkg /p:PackageVersion=${{ steps.version.outputs.version }}
+        run: dotnet pack src/NimbleMock/NimbleMock.csproj -c Release --no-build -o ./nupkg /p:Version=${{ steps.version.outputs.version }} /p:PackageVersion=${{ steps.version.outputs.version }}
       
       - name: Push to NuGet
         env:

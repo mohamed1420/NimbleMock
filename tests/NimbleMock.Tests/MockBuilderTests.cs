@@ -21,27 +21,27 @@ public class MockBuilderTests
     }
 
     [Fact]
-    public void SetupAsync_ReturnsConfiguredValue()
+    public async Task SetupAsync_ReturnsConfiguredValue()
     {
         var mock = Mock.Of<IUserRepository>()
             .SetupAsync(x => x.SaveAsync(default!), true)
             .Build();
 
-        var result = mock.Object.SaveAsync(new User()).Result;
+        var result = await mock.Object.SaveAsync(new User());
 
         Assert.True(result);
     }
 
     [Fact]
-    public void Throws_ThrowsConfiguredException()
+    public async Task Throws_ThrowsConfiguredException()
     {
         var exception = new TimeoutException("API timeout");
         
         var mock = Mock.Of<IExternalApi>()
-            .Throws(x => x.HealthCheck(), exception)
+            .Throws(x => x.FetchDataAsync("health"), exception)
             .Build();
 
-        var thrown = Assert.Throws<TimeoutException>(() => mock.Object.HealthCheck());
+        var thrown = await Assert.ThrowsAsync<TimeoutException>(() => mock.Object.FetchDataAsync("health"));
         Assert.Equal("API timeout", thrown.Message);
     }
 }

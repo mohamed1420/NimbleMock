@@ -33,6 +33,7 @@ public ref struct VerifyBuilder<T> where T : class
         if (count != 1)
             throw new VerificationException(
                 $"Expected 1 call, got {count}");
+        _instance.MarkAsVerified(_methodId);
     }
     
     /// <summary>
@@ -47,6 +48,7 @@ public ref struct VerifyBuilder<T> where T : class
         if (count != expected)
             throw new VerificationException(
                 $"Expected {expected} calls, got {count}");
+        _instance.MarkAsVerified(_methodId);
     }
     
     /// <summary>
@@ -60,6 +62,7 @@ public ref struct VerifyBuilder<T> where T : class
         if (count != 0)
             throw new VerificationException(
                 $"Expected 0 calls, got {count}");
+        _instance.MarkAsVerified(_methodId);
     }
     
     /// <summary>
@@ -74,6 +77,7 @@ public ref struct VerifyBuilder<T> where T : class
         if (count < minimum)
             throw new VerificationException(
                 $"Expected at least {minimum} calls, got {count}");
+        _instance.MarkAsVerified(_methodId);
     }
     
     /// <summary>

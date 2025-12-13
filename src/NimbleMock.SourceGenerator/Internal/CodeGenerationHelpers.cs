@@ -59,7 +59,9 @@ internal static class CodeGenerationHelpers
 
         // Get setup
         sb.AppendLine("        if (!_instance.TryGetSetup(methodId, out var setup))");
-        
+        sb.AppendLine("        {");
+        sb.AppendLine($"            if (_instance.IsPartial)");
+        sb.AppendLine($"                throw new System.NotImplementedException($\"Method {methodName} is not mocked in partial mock.\");");
         if (method.ReturnsVoid)
         {
             sb.AppendLine("            return;");
@@ -68,7 +70,7 @@ internal static class CodeGenerationHelpers
         {
             sb.AppendLine($"            return default({returnType})!;");
         }
-        
+        sb.AppendLine("        }");
         sb.AppendLine();
 
         // Handle exceptions

@@ -126,3 +126,68 @@ mock.Verify(x => x.SendAsync(default!, default!))
     .Matching(email => email.Contains("@"));
 ```
 
+## Mock.Static<T>()
+
+Creates a static mock builder for static/sealed types like `DateTime`, `Environment`, etc.
+
+```csharp
+var staticMock = Mock.Static<DateTime>()
+    .Returns(d => d.Now, fixedDate)
+    .Build();
+
+staticMock.Verify(d => d.Now).Once();
+```
+
+
+## Advanced Examples
+
+### Generics with Type Inference
+
+```csharp
+public interface IRepository
+{
+    IQueryable<T> Query<T>();
+}
+
+var mock = Mock.Of<IRepository>()
+    .Setup(x => x.Query<User>(), users.AsQueryable())
+    .Setup(x => x.Query<Order>(), orders.AsQueryable())
+    .Build();
+
+var userQuery = mock.Object.Query<User>();
+var filtered = userQuery.Where(u => u.IsActive).ToList();
+```
+
+### Nested Mock Hierarchies
+
+```csharp
+public interface IRepository
+{
+    IQueryable<T> Query<T>();
+    Task<T> GetByIdAsync<T>(int id);
+}
+
+var mock = Mock.Of<IRepository>()
+    .Setup(x => x.Query<User>(), users.AsQueryable())
+    .SetupAsync(x => x.GetByIdAsync<User>(1), user)
+    .Chain<IRepository>(x => x.Query<User>())
+    .Build();
+```
+
+## Lie-Proofing
+
+Validate that your mocks match real API shapes using `LieProofing.AssertMatchesReal<T>`:
+
+```csharp
+var result = await LieProofing.AssertMatchesReal<IApiService>(
+    "https://api.staging.example.com/v1");
+    
+if (!result.IsValid)
+{
+    foreach (var mismatch in result.Mismatches)
+    {
+        Console.WriteLine($"Mismatch: {mismatch}");
+    }
+}
+```
+

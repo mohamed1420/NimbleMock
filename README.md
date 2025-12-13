@@ -4,6 +4,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/NimbleMock.svg)](https://www.nuget.org/packages/NimbleMock/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![GitHub](https://img.shields.io/github/stars/guinhx/NimbleMock?style=social)](https://github.com/guinhx/NimbleMock)
 
 ## Why NimbleMock?
 
