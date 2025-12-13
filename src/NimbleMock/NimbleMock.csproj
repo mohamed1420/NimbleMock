@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -11,12 +11,19 @@
     <Version Condition="'$(Version)' == ''">1.0.0</Version>
     <PackageId>NimbleMock</PackageId>
     <Authors>Diego Teles</Authors>
-    <Description>Zero-allocation, source-generated C# mocking library. 34x faster than Moq, 7x faster than NSubstitute. Features fluent API, first-class async support, partial mocks, and compile-time analyzers.</Description>
+    <Description>NimbleMock is a zero-allocation, source-generated mocking library for .NET. 34x faster than Moq and 7x faster than NSubstitute in mock creation. Features: fluent API, partial mocks, static/sealed mocking, full async/ValueTask support, generic type inference, compile-time analyzers, and lie-proofing against real APIs.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/guinhx/NimbleMock</PackageProjectUrl>
     <RepositoryUrl>https://github.com/guinhx/NimbleMock</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>mock;mocking;testing;unit-testing;source-generator;performance;moq;nsubstitute;xunit;nunit;mstest</PackageTags>
+    <PackageTags>
+      mock;mocking;mock-library;unit-testing;testing;tdd;bdd;
+      moq;nsubstitute;fakeiteasy;mocking-framework;
+      xunit;nunit;mstest;
+      source-generator;source-generators;roslyn;analyzers;
+      performance;fast-mocking;zero-allocation;
+      dotnet;csharp;dotnet-testing
+    </PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Copyright>Copyright © 2025 Diego Teles</Copyright>
   </PropertyGroup>
@@ -30,11 +37,6 @@
     </AssemblyAttribute>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.5" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
-  </ItemGroup>
 
   <!-- Include Source Generator and Analyzers -->
   <ItemGroup>
