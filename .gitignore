@@ -33,6 +33,7 @@ bld/
 **/packages/*
 
 # Benchmark results
+benchmarks/*
 benchmarks/results/*.json
 !benchmarks/results/baseline.json
 
