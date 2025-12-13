@@ -1,0 +1,43 @@
+name: Performance Benchmarks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build benchmarks
+      run: dotnet build tests/NimbleMock.Benchmarks/NimbleMock.Benchmarks.csproj --configuration Release --no-restore
+    
+    - name: Run benchmarks
+      run: dotnet run --project tests/NimbleMock.Benchmarks/NimbleMock.Benchmarks.csproj --configuration Release -- --exporters json --artifacts benchmarks/results
+    
+    - name: Compare with baseline
+      run: |
+        if [ -f benchmarks/results/baseline.json ]; then
+          echo "Comparing results with baseline..."
+          # Add comparison logic here
+        fi
+    
+    - name: Upload results
+      uses: actions/upload-artifact@v4
+      with:
+        name: benchmark-results
+        path: benchmarks/results/*.json
+

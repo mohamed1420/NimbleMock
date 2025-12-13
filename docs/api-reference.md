@@ -1,0 +1,128 @@
+# API Reference
+
+## Mock.Of<T>()
+
+Creates a new mock builder for the specified interface.
+
+```csharp
+var mock = Mock.Of<IUserRepository>()
+    .Setup(x => x.GetById(1), user)
+    .Build();
+```
+
+## Mock.Partial<T>()
+
+Creates a partial mock where only specified methods are mocked. Unmocked methods will throw `NotImplementedException`.
+
+```csharp
+var mock = Mock.Partial<ILargeService>()
+    .Only(x => x.GetData(1), data)
+    .Build();
+```
+
+## MockBuilder<T>
+
+### Setup<TResult>(Expression, TResult)
+
+Configures a method to return a value.
+
+```csharp
+.Setup(x => x.GetById(1), user)
+```
+
+### SetupAsync<TResult>(Expression, TResult)
+
+Configures an async method returning `Task<TResult>` or `ValueTask<TResult>` to return a value.
+
+```csharp
+.SetupAsync(x => x.SaveAsync(default!), true)
+```
+
+### Throws<TException>(Expression, Exception)
+
+Configures a method to throw an exception.
+
+```csharp
+.Throws(x => x.HealthCheck(), new TimeoutException())
+```
+
+## PartialMock<T>
+
+A builder for configuring partial mock method setups. Only specified methods will be mocked; others will throw `NotImplementedException`.
+
+### Only<TResult>(Expression, TResult)
+
+Configures a method to be mocked, returning the specified value.
+
+```csharp
+var mock = Mock.Partial<ILargeService>()
+    .Only(x => x.GetData(1), data)
+    .Build();
+```
+
+## VerifiableMock<T>
+
+### Object
+
+Gets the mocked object instance.
+
+```csharp
+var repo = mock.Object;
+```
+
+### Verify<TResult>(Expression)
+
+Starts verification for a method call.
+
+```csharp
+mock.Verify(x => x.GetById(1)).Once();
+```
+
+### VerifyNoOtherCalls()
+
+Verifies that no other methods were called.
+
+```csharp
+mock.VerifyNoOtherCalls();
+```
+
+## VerifyBuilder<T>
+
+### Once()
+
+Verifies the method was called exactly once.
+
+### Times(int)
+
+Verifies the method was called a specific number of times.
+
+```csharp
+mock.Verify(x => x.GetById(1)).Times(3);
+```
+
+### Never()
+
+Verifies the method was never called.
+
+```csharp
+mock.Verify(x => x.Delete(2)).Never();
+```
+
+### AtLeast(int)
+
+Verifies the method was called at least the specified number of times.
+
+```csharp
+mock.Verify(x => x.SendEmail(default!)).AtLeast(1);
+```
+
+### WithArg<TArg>(int)
+
+Verifies method arguments.
+
+```csharp
+mock.Verify(x => x.SendAsync(default!, default!))
+    .WithArg<string>(0)
+    .Matching(email => email.Contains("@"));
+```
+
